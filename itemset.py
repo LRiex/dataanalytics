@@ -13,7 +13,7 @@ dfMain = pd.read_csv("Sample_Crimes3.csv")
 
 # print dfMain.values[206]
 
-indexing = random.sample(range(0, 20000), 1000)
+indexing = random.sample(range(0, 20000), 20000)
 
 X = dfMain.values[indexing, 0:568]
 Y = dfMain.values[indexing, 568]
