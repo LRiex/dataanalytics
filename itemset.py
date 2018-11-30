@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import random
-dfMain = pd.read_csv("Sample_Crimes.csv")
+dfMain = pd.read_csv("Sample_Crimes2.csv")
 # print dfMain.head(3) #prints 3 heading rows
 
 # df = pd.read_csv("DayofWeek.csv")
@@ -13,10 +13,10 @@ dfMain = pd.read_csv("Sample_Crimes.csv")
 
 # print dfMain.values[206]
 
-indexing = random.sample(range(0, 20000), 100)
+indexing = random.sample(range(0, 20000), 1000)
 
-X = dfMain.values[indexing, 0:7]
-Y = dfMain.values[indexing, 7]
+X = dfMain.values[indexing, 0:13]
+Y = dfMain.values[indexing, 13]
 print [sum(Y==i) for i in range(1,35)]
 
 from sklearn.naive_bayes import BernoulliNB
@@ -25,4 +25,6 @@ clf = BernoulliNB()
 clf.fit(X, Y)
 # BernoulliNB(alpha=1.0, binarize=0.0, class_prior=None, fit_prior=True)
 # print X[6:800]
-print clf.predict(X[6:10])
+
+
+print len([i for i, j in zip(clf.predict(X), Y) if i == j])
